@@ -14,6 +14,7 @@ import com.hubin.forum.portal.support.WebUtil;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.UnsupportedEncodingException;
 
 /**
  * @author Hubin
@@ -30,6 +31,13 @@ public class GithubController {
 
     @GetMapping("/oauth-callback")
     public String index(GithubOauthLoginRequest request, HttpServletRequest servletRequest, HttpServletResponse response) {
+        try {
+            servletRequest.setCharacterEncoding("utf-8");
+            response.setCharacterEncoding("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         LogUtil.info(log, "github OauthRequest = {}", request);
         request.setIp(WebUtil.requestIp(servletRequest));
         request.setUa(WebUtil.requestUa(servletRequest));

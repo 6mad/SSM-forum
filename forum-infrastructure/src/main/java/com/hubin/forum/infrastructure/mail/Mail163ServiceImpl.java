@@ -9,10 +9,8 @@ import com.hubin.forum.domain.entity.Message;
 import com.hubin.forum.domain.service.MailService;
 
 import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+import javax.mail.internet.*;
+import java.io.UnsupportedEncodingException;
 import java.security.Security;
 import java.util.Properties;
 import java.util.function.Consumer;
@@ -40,6 +38,8 @@ public class Mail163ServiceImpl implements MailService {
     private String password;
 
     private String fromAddress;
+
+    private String fromName;
 
     /**
      * 发送html内容
@@ -85,15 +85,16 @@ public class Mail163ServiceImpl implements MailService {
             });
 
             MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromAddress));
+            message.setFrom(new InternetAddress(fromAddress,MimeUtility.encodeText(fromName)));
             message.addRecipient(javax.mail.Message.RecipientType.TO, new InternetAddress(emailMessage.getReceiver().getId()));
             message.setSubject(emailMessage.getTitle());
 
             consumer.accept(message);
-
             message.saveChanges();
             Transport.send(message);
         } catch (Exception e) {
+            System.out.println("看向我");
+            e.printStackTrace();
             throw new BizException(ErrorCodeEn.MESSAGE_SYSTEM_MAIL_SEND_FAIL);
         }
     }
@@ -106,6 +107,7 @@ public class Mail163ServiceImpl implements MailService {
         props.setProperty("mail.smtp.port", port);
         props.setProperty("mail.smtp.socketFactory.port", socketFactoryPort);
         props.setProperty("mail.smtp.auth", auth);
+        props.put("mail.smtp.ssl.enable", true);
         props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
         props.setProperty("mail.smtp.socketFactory.fallback", "false");
         return props;

@@ -397,17 +397,7 @@ export default {
       this.loadArticle(this.$route.params.id)
     } else {
       document.title = '提问题'
-      this.article.markdownContent = `# 一 一级标题
-
-## 1.1 二级标题
-
-- xxxx;
-- xxxx;
-
-## 1.2 二级标题
-
-1. xxxx;
-2. xxxx;`
+      this.article.markdownContent = ``
     }
   }
 }

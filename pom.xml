@@ -21,10 +21,10 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pub.developers</groupId>
-	<artifactId>forum-java</artifactId>
+	<groupId>com.hubin</groupId>
+	<artifactId>SSM-forum</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>forum-java</name>
+	<name>SSM-forum</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

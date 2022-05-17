@@ -2,7 +2,7 @@
 <configuration scan="true" scanPeriod=" 5 seconds" debug="false">
 
     <!-- 定义变量 -->
-    <property name="log.path" value="./opt/logs/forum-java"/>
+    <property name="log.path" value="./opt/logs/SSM-forum"/>
     <property name="log.level" value="info"/>
     <property name="log.pattern" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%-4relative:%thread] %-5level %logger{56} - %msg%n" />
     <property name="max.day" value="20"/>
@@ -16,13 +16,13 @@
     </appender>
 
     <!-- 业务日志 -->
-    <appender name="forum-java" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${log.path}/forum-java.log</File>
+    <appender name="SSM-forum" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${log.path}/SSM-forum.log</File>
         <encoder>
             <pattern>${log.pattern}</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.path}/%d{yyyy-MM-dd}/forum-java-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
+            <fileNamePattern>${log.path}/%d{yyyy-MM-dd}/SSM-forum-%d{yyyy-MM-dd}-%i.log.gz</fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>${max.size}</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -80,6 +80,6 @@
     <root level="info">
         <appender-ref ref="error"/>
         <appender-ref ref="stdout"/>
-        <appender-ref ref="forum-java"/>
+        <appender-ref ref="SSM-forum"/>
     </root>
 </configuration>

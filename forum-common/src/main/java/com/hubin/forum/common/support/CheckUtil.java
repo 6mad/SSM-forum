@@ -8,7 +8,7 @@ import java.text.MessageFormat;
 
 /**
  * @author Hubin
- * @create 22/2/1220/7/23
+ * @create 22/2/12
  * @desc
  **/
 public class CheckUtil {
@@ -25,18 +25,6 @@ public class CheckUtil {
         if (ObjectUtils.isEmpty(o)) {
             throw new BizException(ErrorCodeEn.PARAM_CHECK_ERROR.getCode(),
                     MessageFormat.format(ErrorCodeEn.PARAM_CHECK_ERROR.getMessage(), message));
-        }
-    }
-
-    /**
-     * 检查请求路径参数是否为空
-     *
-     * @param o
-     */
-    public static void checkEmptyToast(Object o, String message) {
-        if (ObjectUtils.isEmpty(o)) {
-            throw new BizException(ErrorCodeEn.CHECK_ERROR_TOAST.getCode(),
-                    MessageFormat.format(ErrorCodeEn.CHECK_ERROR_TOAST.getMessage(), message));
         }
     }
 

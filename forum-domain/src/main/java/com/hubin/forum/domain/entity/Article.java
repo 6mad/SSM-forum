@@ -32,7 +32,6 @@ public class Article extends BasePosts {
     public Article copy() {
         Article article = new Article();
         BeanUtils.copyProperties(this, article);
-
         return article;
     }
 

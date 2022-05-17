@@ -206,7 +206,6 @@ public class IndexController {
                 if (response.getRefCount().equals(0L)) {
                     continue;
                 }
-
                 allRefCount += response.getRefCount();
 
                 Map<String, Object> type = new HashMap<>();

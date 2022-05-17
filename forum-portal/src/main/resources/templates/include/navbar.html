@@ -77,6 +77,14 @@
                         </div>
                         <input id="loginPassword" type="password" class="form-control" placeholder="请输入登录密码" />
                     </div>
+                    <br/>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">验证码</span>
+                        </div>
+                        <input type="text" class="form-control" id="log_txtcode" />
+                        <input type="button" class="checkcode" id="logcheckcode" onclick="createCode()"/>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button id="loginBtn" type="button" class="btn btn-primary">登录</button>
@@ -127,6 +135,14 @@
                             <span class="input-group-text">确认</span>
                         </div>
                         <input id="registerPassword2" type="password" class="form-control" placeholder="请再次输入注册密码" />
+                    </div>
+                    <br/>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">验证码</span>
+                        </div>
+                        <input type="text" class="form-control" id="reg_txtcode" />
+                        <input type="button" class="checkcode" id="regcheckcode" onclick="createCode()"/>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -54,29 +54,29 @@ public class ArticleTransfer {
     }
 
     public static List<ArticleUserPageResponse> toArticleUserPageResponses(List<Article> articles) {
-        return SafesUtil.ofList(articles).stream().map(article -> {
-            return ArticleUserPageResponse.builder()
-                    .auditState(article.getAuditState().getDesc())
-                    .category(PostsCategoryEn.ARTICLE.getValue())
-                    .categoryDesc(PostsCategoryEn.ARTICLE.getDesc())
-                    .authorAvatar(article.getAuthor().getAvatar())
-                    .authorId(article.getAuthor().getId())
-                    .authorNickname(article.getAuthor().getNickname())
-                    .comments(article.getComments())
-                    .createAt(article.getCreateAt())
-                    .updateAt(article.getUpdateAt())
-                    .headImg(article.getHeadImg())
-                    .id(article.getId())
-                    .introduction(article.getMarkdownContent())
-                    .marrow(article.getMarrow())
-                    .official(article.getOfficial())
-                    .tags(tags(article.getTags()))
-                    .title(article.getTitle())
-                    .top(article.getTop())
-                    .views(article.getViews())
-                    .approvals(article.getApprovals())
-                    .build();
-        }).collect(Collectors.toList());
+        return SafesUtil.ofList(articles).stream().map(article ->
+                ArticleUserPageResponse.builder()
+                        .auditState(article.getAuditState().getDesc())
+                        .category(PostsCategoryEn.ARTICLE.getValue())
+                        .categoryDesc(PostsCategoryEn.ARTICLE.getDesc())
+                        .authorAvatar(article.getAuthor().getAvatar())
+                        .authorId(article.getAuthor().getId())
+                        .authorNickname(article.getAuthor().getNickname())
+                        .comments(article.getComments())
+                        .createAt(article.getCreateAt())
+                        .updateAt(article.getUpdateAt())
+                        .headImg(article.getHeadImg())
+                        .id(article.getId())
+                        .introduction(article.getMarkdownContent())
+                        .marrow(article.getMarrow())
+                        .official(article.getOfficial())
+                        .tags(tags(article.getTags()))
+                        .title(article.getTitle())
+                        .top(article.getTop())
+                        .views(article.getViews())
+                        .approvals(article.getApprovals())
+                        .build()
+        ).collect(Collectors.toList());
     }
 
     private static List<TagVO> tags(Set<Tag> tags) {

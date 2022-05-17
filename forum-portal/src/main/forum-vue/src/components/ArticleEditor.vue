@@ -126,11 +126,11 @@
       <div class="article-box--title-home">
         <Button @click="goHome" type="info">返回首页</Button>
       </div>
-      <input v-model="article.title" class="article-box-title-input" placeholder="这里输入文章标题"/>
+      <input v-model="article.title" class="article-box-title-input" placeholder="这里输入话题标题"/>
     </div>
     <mavon-editor
       class="article-box-content"
-      placeholder="这里输入文章内容，markdown格式。"
+      placeholder="这里输入话题内容，markdown格式。"
       :style="{zIndex:0}"
       :toolbars="editorSetting"
       v-model="article.markdownContent"
@@ -140,7 +140,7 @@
     <div class="article-box-foot">
       <Select v-model="article.typeId"
         class="article-box-foot-type"
-        placeholder="选择所属分类">
+        placeholder="选择所属 分类">
         <Option v-for="type in types"
           :value="type.id"
           :key="type.id">{{ type.name }}</Option>
@@ -444,17 +444,7 @@ export default {
       this.loadArticle(this.$route.params.id)
     } else {
       document.title = '写文章'
-      this.article.markdownContent = `# 一 一级标题
-
-## 1.1 二级标题
-
-- xxxx;
-- xxxx;
-
-## 1.2 二级标题
-
-1. xxxx;
-2. xxxx;`
+      this.article.markdownContent = ``
     }
   }
 }

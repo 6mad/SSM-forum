@@ -58,6 +58,14 @@
                 return false;
             }
 
+            var inputCode = $('#log_txtcode').val().toUpperCase();
+            if(inputCode!=code){
+                toastr.error('验证码输入错误,请重新输入！');
+                createCode(); //刷新验证码
+                $('#log_txtcode').val(""); //清空文本框
+                return false;
+            }
+
             post('/user-rest/login', {
                 'email': email,
                 'password': md5(password)
@@ -104,6 +112,14 @@
             if (password2 !== password) {
                 toastr.error('二次密码不一致，请重新输入');
                 return;
+            }
+
+            var inputCode = $('#reg_txtcode').val().toUpperCase();
+            if(inputCode!=code){
+                toastr.error('验证码输入错误,请重新输入！');
+                createCode(); //刷新验证码
+                $('#reg_txtcode').val(""); //清空文本框
+                return false;
             }
 
             post('/user-rest/register', {
@@ -305,6 +321,25 @@
             headHTML += '<link href="' + url + '" rel="stylesheet">';
             document.getElementsByTagName('head')[0].innerHTML = headHTML;
         };
+
+        //产生验证码
+        window.onload = function() {
+            createCode();
+        };
+        var code; //在全局定义验证码
+        function createCode() {
+            code = "";
+            var codeLength = 4; //验证码的长度
+            var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数
+            for(var i = 0; i < codeLength; i++) { //循环操作
+                var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）
+                code += random[index]; //根据索引取得随机数加到code上
+            }
+            $("#logcheckcode").val( code); //把code值赋给验证码
+            $("#regcheckcode").val(code); //把code值赋给验证码
+        }
+
     </script>
 </footer>
 

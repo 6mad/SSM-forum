@@ -15,10 +15,11 @@ import javax.annotation.Resource;
 public class WebConfigurer implements WebMvcConfigurer {
 
     @Resource
-    private GlobalViewInterceptor globalViewInterceptor;
+    private CorsInterceptor corsInterceptor;
 
     @Resource
-    private CorsInterceptor corsInterceptor;
+    private GlobalViewInterceptor globalViewInterceptor;
+
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

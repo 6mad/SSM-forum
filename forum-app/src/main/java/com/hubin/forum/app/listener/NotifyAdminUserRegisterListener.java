@@ -35,7 +35,7 @@ public class NotifyAdminUserRegisterListener extends EventBus.EventHandler<User>
         // 发送消息通知
         messageService.send(Message.builder()
                 .channel(MessageChannelEn.MAIL)
-                .type(MessageTypeEn.USER_REGISTER_NOTIFY_ADMIN)
+                .type(MessageTypeEn.EMAIL_ATCTIVE)
                 .sender(IdValue.builder()
                         .id(null)
                         .type(IdValueTypeEn.EMAIL)
@@ -46,7 +46,7 @@ public class NotifyAdminUserRegisterListener extends EventBus.EventHandler<User>
                         .build())
                 .title("有新用户注册啦")
                 .content(user.toString())
-                .contentType(MessageContentTypeEn.TEXT)
+                .contentType(MessageContentTypeEn.HTML)
                 .build());
     }
 }

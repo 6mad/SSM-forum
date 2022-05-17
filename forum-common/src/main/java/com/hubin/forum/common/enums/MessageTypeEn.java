@@ -19,7 +19,9 @@ public enum MessageTypeEn {
     COMMENT_FAQ("COMMENT_FAQ", "评论问答"),
 
     FOLLOW_USER("FOLLOW_USER", "用户关注"),
+    EMAIL_ATCTIVE("EMAIL_ATCTIVE", "邮箱激活"),
     ;
+
     private String value;
     private String desc;
 
